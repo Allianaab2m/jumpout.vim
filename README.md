@@ -26,6 +26,6 @@ nnoremap <expr> <C-w>l jumpout#jumpable('l') ?
 
 ## Todo
 
--[ ] docs
--[ ] autocmd for closing of windows opend by jumpout
--[ ] loop option
+- [ ] docs
+- [ ] autocmd for closing of windows opend by jumpout
+- [ ] loop option
