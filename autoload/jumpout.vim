@@ -9,14 +9,8 @@ endfunction
 function! jumpout#hook_jump(direction, cmd) abort
   execute a:cmd
 
-  if a:direction ==# 'h'
-    wincmd h
-  elseif a:direction ==# 'j'
-    wincmd j
-  elseif a:direction ==# 'k'
-    wincmd k
-  elseif a:direction ==# 'l'
-    wincmd l
+  if a:direction =~# '[hjkl]'
+    execute(printf('wincmd %s', a:direction))
   endif
 endfunction
 
