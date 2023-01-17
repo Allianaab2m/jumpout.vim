@@ -1,16 +1,27 @@
-function! jumpout#jumpable(direction) abort
-  if a:direction !~# '[hjkl]'
-    return v:false
+" Single jump.
+" direction -> 'h' | 'j' | 'k' | 'l'
+" cmd -> string
+" return -> v:null
+
+function! jumpout#jump(direction, cmd) abort
+  if (!jumpout_utils#_check_jumpable(a:direction)) " false = run cmd
+    execute a:cmd
   endif
-  return winnr() != winnr(a:direction)
-  " TODO: Implement autocmd for closing of windows opened by jumpout
+
+  " fallback <C-w>direction or jump into opened window
+  execute(printf('wincmd %s', a:direction))
 endfunction
 
-function! jumpout#hook_jump(direction, cmd) abort
-  execute a:cmd
+" selectable jump commands.
+" direction -> 'h' | 'j' | 'k' | 'l'
+" cmds -> string[]
+" return -> v:null
 
-  if a:direction =~# '[hjkl]'
-    execute(printf('wincmd %s', a:direction))
+function! jumpout#select_jump(direction, cmds)
+  if (!jumpout_utils#_check_jumpable(a:direction))
+    call jumpout_utils#_select(a:cmds, {}, function('jumpout_utils#_select_handler'))
   endif
+
+  execute(printf('wincmd %s', a:direction))
 endfunction
 
