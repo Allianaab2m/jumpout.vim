@@ -15,8 +15,8 @@ use({"Allianaab2m/jumpout.vim"})
 
 ## Usage
 ```vim
-nnoremap <expr> <C-w>h "<Cmd>call jumpout#jump('h', 'Neotree')<CR>"
-nnoremap <expr> <C-w>j "<Cmd>call jumpout#select_jump('j', ['bo term', 'Trouble workspace_diagnostics'])"
+nnoremap <C-w>h <Cmd>call jumpout#jump('h', 'Neotree')<CR>
+nnoremap <C-w>j <Cmd>call jumpout#select_jump('j', ['bo term', 'Trouble workspace_diagnostics'])<CR>
 ```
 
 ## Todo
