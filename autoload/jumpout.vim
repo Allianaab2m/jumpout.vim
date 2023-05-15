@@ -6,10 +6,12 @@
 function! jumpout#jump(direction, cmd) abort
   if (!jumpout_utils#_check_jumpable(a:direction)) " false = run cmd
     execute a:cmd
+    execute(printf('wincmd %s', a:direction))
+    execute(printf('map <buffer> <C-w>%s <Cmd>close<CR>', jumpout_utils#_reverse_direction(a:direction)))
+  else
+    " fallback <C-w>direction or jump into opened window
+    execute(printf('wincmd %s', a:direction))
   endif
-
-  " fallback <C-w>direction or jump into opened window
-  execute(printf('wincmd %s', a:direction))
 endfunction
 
 " selectable jump commands.
