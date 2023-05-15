@@ -22,5 +22,5 @@ nnoremap <C-w>j <Cmd>call jumpout#select_jump('j', ['bo term', 'Trouble workspac
 ## Todo
 
 - [x] docs
-- [ ] autocmd for closing of windows opend by jumpout
+- [x] autocmd for closing of windows opend by jumpout
 - [ ] loop option
